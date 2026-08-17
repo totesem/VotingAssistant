@@ -196,7 +196,7 @@ async function sendToAlternate(email) {
 
             } finally {
 
-                sheet.protection.resumeProtection(SHEET_PASSWORD);
+                sheet.protection.resumeProtection();
                 await context.sync();
 
             }
@@ -291,7 +291,7 @@ async function submitVote(email) {
 
             } finally {
                 
-                sheet.protection.resumeProtection(SHEET_PASSWORD);
+                sheet.protection.resumeProtection();
                 await context.sync();
             }
 

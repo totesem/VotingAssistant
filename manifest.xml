@@ -83,7 +83,7 @@
     </Resources>
     <WebApplicationInfo>
     <Id>9d5a4bd8-51a2-435d-a076-d61dc101ba34</Id>
-    <Resource>api://localhost:3000/9d5a4bd8-51a2-435d-a076-d61dc101ba34</Resource>
+    <Resource>api://totesem.github.io/9d5a4bd8-51a2-435d-a076-d61dc101ba34</Resource>
     <Scopes>
         <Scope>openid</Scope>
         <Scope>profile</Scope>

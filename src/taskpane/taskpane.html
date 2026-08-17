@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voting Assistant</title>
+
+    <link rel="stylesheet"
+          href="https://appsforoffice.microsoft.com/fabric/2.6.1/fabric.min.css">
+
+    <link rel="stylesheet"
+          href="taskpane.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Voting Assistant</h1>
+
+        <div class="card">
+            <div class="label">Signed in as</div>
+            <div id="userEmail">Checking...</div>
+        </div>
+
+        <div class="card">
+            <div class="label">Status</div>
+            <div id="status">Ready</div>
+        </div>
+
+        <!-- Voting Card -->
+        <div class="card" id="votingCard" style="display:none;">
+
+            <div class="label">Your Vote</div>
+
+            <div class="vote-options">
+
+                <label class="vote-option">
+                    <input type="radio"
+                           name="vote"
+                           value="Y">
+                    <span>Yes</span>
+                </label>
+
+                <label class="vote-option">
+                    <input type="radio"
+                           name="vote"
+                           value="N">
+                    <span>No</span>
+                </label>
+
+                <label class="vote-option">
+                    <input type="radio"
+                           name="vote"
+                           value="A">
+                    <span>Abstain</span>
+                </label>
+
+            </div>
+
+            <div class="label">Comments</div>
+
+            <textarea
+                id="comments"
+                rows="4"
+                placeholder="Optional comments">
+            </textarea>
+
+            <div class="label">Alternate Voter</div>
+
+            <textarea
+                id="alternateEmail"
+                rows="1"
+                placeholder="youralternate@email.com">
+            </textarea>
+
+            <button id="sendtoalt" type="button">
+                Send to alternate
+            </button>
+
+            <button id="submitVote" type="button">
+                Submit Vote
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script src="taskpane.js"></script>
+</body>
+</html>

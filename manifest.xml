@@ -6,7 +6,7 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Voting Assistant"/>
   <Description DefaultValue="A template to get started."/>
-  <IconUrl DefaultValue="https://totesem.github.io/VotingAssistant/assets/icon-32.png"/>
+  <IconUrl DefaultValue="https://totesem.github.io/VotingAssistant/docs/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://totesem.github.io/VotingAssistant/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://isa.org"/>
   <AppDomains>

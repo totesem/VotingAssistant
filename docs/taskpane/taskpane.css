@@ -78,3 +78,26 @@
 b {
     font-weight: bold;
 }
+
+.container {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.vote-options {
+    justify-content: center;
+}

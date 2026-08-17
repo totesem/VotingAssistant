@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>39c40b9c-fa5d-4cd0-91b5-268193c74b72</Id>
-  <Version>1.0.0.1</Version>
-  <ProviderName>Contoso</ProviderName>
+  <Version>1.0.0.2</Version>
+  <ProviderName>ISA</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Voting Assistant"/>
   <Description DefaultValue="A template to get started."/>
   <IconUrl DefaultValue="https://totesem.github.io/VotingAssistant/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <HighResolutionIconUrl DefaultValue="https://totesem.github.io/VotingAssistant/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://isa.org"/>
   <AppDomains>
-    <AppDomain>https://www.contoso.com</AppDomain>
+    <AppDomain>https://totesem.github.io</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>

@@ -2,7 +2,7 @@
 
 let initialized = false;
 let currentUserEmail = "";
-const SHEET_PASSWORD = "isa2026s";
+const SHEET_PASSWORD = "isa2026";
 
 Office.onReady(() => {
     if (initialized) return;
@@ -146,7 +146,7 @@ async function sendToAlternate(email) {
             const sheet = 
                 context.workbook.worksheets.getItem("Filtered Output");
 
-            sheet.protection.unprotect("isa2026");
+            sheet.protection.unprotect(SHEET_PASSWORD);
 
             try {
 
@@ -189,9 +189,6 @@ async function sendToAlternate(email) {
 
                 await context.sync();
 
-                document.getElementById("status").textContent =
-                    "Alternate voter added.";
-
                 // Alternate has been entered, so disable normal submission
                 document.getElementById("submitVote").disabled = true;
 
@@ -205,6 +202,9 @@ async function sendToAlternate(email) {
             }
 
         });
+
+        document.getElementById("status").textContent =
+            "Alternate voter added.";
 
     } catch (error) {
 
@@ -245,7 +245,7 @@ async function submitVote(email) {
             const sheet =
                 context.workbook.worksheets.getItem("Filtered Output");
 
-            sheet.protection.unprotect("isa2026");
+            sheet.protection.unprotect(SHEET_PASSWORD);
 
             try {
 
@@ -286,18 +286,19 @@ async function submitVote(email) {
 
             await context.sync();
 
-            document.getElementById("status").textContent =
-                "Vote submitted successfully.";
 
             console.log("Vote submitted:", vote);
 
             } finally {
                 
-                sheet.protection.protect("isa2026");
+                sheet.protection.protect(SHEET_PASSWORD);
                 await context.sync();
             }
 
         });
+
+        document.getElementById("status").textContent =
+            "Vote submitted successfully.";
 
     } catch (error) {
 

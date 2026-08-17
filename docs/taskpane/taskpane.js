@@ -146,7 +146,7 @@ async function sendToAlternate(email) {
             const sheet = 
                 context.workbook.worksheets.getItem("Filtered Output");
 
-            sheet.protection.pauseProtection(SHEET_PASSWORD);
+            sheet.protection.unprotect(SHEET_PASSWORD);
 
             try {
 
@@ -196,7 +196,7 @@ async function sendToAlternate(email) {
 
             } finally {
 
-                sheet.protection.resumeProtection();
+                sheet.protection.protect({}, SHEET_PASSWORD);
                 await context.sync();
 
             }
@@ -245,7 +245,7 @@ async function submitVote(email) {
             const sheet =
                 context.workbook.worksheets.getItem("Filtered Output");
 
-            sheet.protection.pauseProtection(SHEET_PASSWORD);
+            sheet.protection.unprotect(SHEET_PASSWORD);
 
             try {
 
@@ -291,7 +291,7 @@ async function submitVote(email) {
 
             } finally {
                 
-                sheet.protection.resumeProtection();
+                sheet.protection.protect({}, SHEET_PASSWORD);
                 await context.sync();
             }
 

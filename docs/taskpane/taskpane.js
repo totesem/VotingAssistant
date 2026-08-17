@@ -2,6 +2,7 @@
 
 let initialized = false;
 let currentUserEmail = "";
+const SHEET_PASSWORD = "isa2026s";
 
 Office.onReady(() => {
     if (initialized) return;
@@ -142,53 +143,66 @@ async function sendToAlternate(email) {
     try {
 
         await Excel.run(async (context) => {
+            const sheet = 
+                context.workbook.worksheets.getItem("Filtered Output");
 
-            const table =
-                context.workbook.tables.getItem("FilteredTable");
+            sheet.protection.unprotect("isa2026");
 
-            const body =
-                table.getDataBodyRange();
+            try {
 
-            body.load("values");
+                const table =
+                    context.workbook.tables.getItem("FilteredTable");
 
-            await context.sync();
+                const body =
+                    table.getDataBodyRange();
 
-            const rows = body.values;
+                body.load("values");
 
-            const rowIndex = rows.findIndex(row => {
+                await context.sync();
 
-                const rowEmails = String(row[2] || "")
-                    .split(";")
-                    .map(e => e.trim().toLowerCase());
+                const rows = body.values;
 
-                return rowEmails.includes(email.trim().toLowerCase());
-            });
+                const rowIndex = rows.findIndex(row => {
 
-            if (rowIndex === -1) {
+                    const rowEmails = String(row[2] || "")
+                        .split(";")
+                        .map(e => e.trim().toLowerCase());
+
+                    return rowEmails.includes(email.trim().toLowerCase());
+                });
+
+                if (rowIndex === -1) {
+
+                    document.getElementById("status").textContent =
+                        "Could not find your voter row.";
+
+                    return;
+                }
+
+                const currentEmail = String(rows[rowIndex][2] || "")
+                    .trim();
+
+                // Add alternate after the existing email
+                body.getCell(rowIndex, 2).values = [[
+                    currentEmail + ";" + alternateEmail
+                ]];
+
+                await context.sync();
 
                 document.getElementById("status").textContent =
-                    "Could not find your voter row.";
+                    "Alternate voter added.";
 
-                return;
+                // Alternate has been entered, so disable normal submission
+                document.getElementById("submitVote").disabled = true;
+
+                document.getElementById("sendtoalt").disabled = true;
+
+            } finally {
+
+                sheet.protection.protect(SHEET_PASSWORD);
+                await context.sync();
+
             }
-
-            const currentEmail = String(rows[rowIndex][2] || "")
-                .trim();
-
-            // Add alternate after the existing email
-            body.getCell(rowIndex, 2).values = [[
-                currentEmail + ";" + alternateEmail
-            ]];
-
-            await context.sync();
-
-            document.getElementById("status").textContent =
-                "Alternate voter added.";
-
-            // Alternate has been entered, so disable normal submission
-            document.getElementById("submitVote").disabled = true;
-
-            document.getElementById("sendtoalt").disabled = true;
 
         });
 
@@ -228,26 +242,33 @@ async function submitVote(email) {
 
         await Excel.run(async (context) => {
 
-            const table =
-                context.workbook.tables.getItem("FilteredTable");
+            const sheet =
+                context.workbook.worksheets.getItem("Filtered Output");
 
-            const body =
-                table.getDataBodyRange();
+            sheet.protection.unprotect("isa2026");
 
-            body.load("values");
+            try {
 
-            await context.sync();
+                const table =
+                    context.workbook.tables.getItem("FilteredTable");
 
-            const rows = body.values;
+                const body =
+                    table.getDataBodyRange();
 
-            const rowIndex = rows.findIndex(row => {
+                body.load("values");
 
-                const rowEmails = String(row[2] || "")
-                    .split(";")
-                    .map(e => e.trim().toLowerCase());
+                await context.sync();
 
-                return rowEmails.includes(email.trim().toLowerCase());
-            });
+                const rows = body.values;
+
+                const rowIndex = rows.findIndex(row => {
+
+                    const rowEmails = String(row[2] || "")
+                        .split(";")
+                        .map(e => e.trim().toLowerCase());
+
+                    return rowEmails.includes(email.trim().toLowerCase());
+                });
 
             if (rowIndex === -1) {
 
@@ -269,6 +290,12 @@ async function submitVote(email) {
                 "Vote submitted successfully.";
 
             console.log("Vote submitted:", vote);
+
+            } finally {
+                
+                sheet.protection.protect("isa2026");
+                await context.sync();
+            }
 
         });
 

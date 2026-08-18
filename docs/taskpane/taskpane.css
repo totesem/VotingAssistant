@@ -119,10 +119,11 @@ button:disabled {
     cursor: default;
 }
 
-#alternateEmail::placeholder {
-    color: #666 !important;
-    opacity: 1 !important;
-    font-style: italic;
+#alternateEmail {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 18px;
 }
 
 /* Voting Assistant v2 */

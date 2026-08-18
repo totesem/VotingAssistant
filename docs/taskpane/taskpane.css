@@ -126,4 +126,10 @@ button:disabled {
     margin-bottom: 18px;
 }
 
+#alternateEmail::placeholder {
+    color: #666 !important;
+    opacity: 1 !important;
+    font-style: italic !important;
+}
+
 /* Voting Assistant v2 */

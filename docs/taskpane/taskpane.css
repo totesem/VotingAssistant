@@ -119,9 +119,10 @@ button:disabled {
     cursor: default;
 }
 
-textarea::placeholder {
-    color: #777;
-    opacity: 1;
+#alternateEmail::placeholder {
+    color: #666 !important;
+    opacity: 1 !important;
+    font-style: italic;
 }
 
 /* Voting Assistant v2 */

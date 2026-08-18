@@ -119,4 +119,22 @@ button:disabled {
     cursor: default;
 }
 
-/* Voting Assistant v3 */
+#alternateEmail {
+    display: block;
+    width: 100%;
+    margin: 0 0 18px;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
+}
+
+#alternateEmail::placeholder {
+    color: #777;
+    opacity: 1;
+}
+
+/* Voting Assistant v4 */

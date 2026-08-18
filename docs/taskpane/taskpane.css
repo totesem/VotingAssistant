@@ -119,4 +119,9 @@ button:disabled {
     cursor: default;
 }
 
+textarea::placeholder {
+    color: #777;
+    opacity: 1;
+}
+
 /* Voting Assistant v2 */

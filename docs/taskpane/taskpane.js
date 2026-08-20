@@ -281,8 +281,8 @@ async function submitVote(email) {
             // Column D = index 3
             // Column E = index 4
 
-            body.getCell(rowIndex, 3).values = [[vote]];
-            body.getCell(rowIndex, 4).values = [[comments]];
+            body.getCell(rowIndex, 4).values = [[vote]];
+            body.getCell(rowIndex, 5).values = [[comments]];
 
             await context.sync();
 
